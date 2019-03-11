@@ -49,6 +49,12 @@
         </tbody>
     </table>
 
+    <h3>Authors</h3>
+
+    <ul data-bind="foreach: authors">
+        <li data-bind="text: $data.name()"></li>
+    </ul>
+
     <hr />
 
     <p data-bind="text: ko.toJSON($root)">

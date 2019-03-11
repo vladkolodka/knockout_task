@@ -3,6 +3,11 @@ var storage = `
         "books": [
             {"id": 1, "name": "Book 1", "releaseDate": "1990-01-01", "raiting": 5, "pages": 10},
             {"id": 2, "name": "Book 2", "releaseDate": "1992-01-01", "raiting": 9, "pages": 50}
+        ],
+        
+        "authors": [
+            {"id": 1, "firstName": "John", "lastName": "Smith"},
+            {"id": 2, "firstName": "Martin", "lastName": "Lloyd"}
         ]
     }
 `;
@@ -17,6 +22,18 @@ var storage = `
         ko.mapping.fromJS(data, modelMapping, this);
     }
 
+    function AuthorModel(data) {
+        var modelMapping = {
+            copy: ['id', 'firstName', 'lastName']
+        };
+
+        this.name = ko.computed(function () {
+            return this.firstName + ' ' + this.lastName;
+        }, this);
+
+        ko.mapping.fromJS(data, modelMapping, this);
+    }
+
     function PageViewModel(data) {
         var modelMapping = {
             books: {
@@ -25,6 +42,14 @@ var storage = `
                 },
                 create: function (options) {
                     return new BookModel(options.data);
+                }
+            },
+            authors: {
+                key: function (obj) {
+                    return obj.id;
+                },
+                create: function (options) {
+                    return new AuthorModel(options.data);
                 }
             }
         };
