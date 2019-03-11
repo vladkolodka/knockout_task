@@ -4,10 +4,54 @@
     <meta charset="UTF-8">
     <title>PIR task 1</title>
 
+    <link rel="stylesheet" type="text/css" href="./style/library.css"/>
+
+<!--
     <script src="./vendor/knockout.js"></script>
+    <script src="./vendor/knockout.mapping.js"></script>
+-->
+    
+    <script src="./vendor/knockout.debug.js"></script>
+    <script src="./vendor/knockout.mapping.debug.js"></script>
+
     <script src="./scripts/editable_library.js"></script>
 </head>
 <body>
-    
+    <h3>Books</h3>
+
+    <table class="catalog">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Release date</td>
+                <td>Authors</td>
+                <td>Raiting</td>
+                <td>Pages</td>
+            </tr>
+        </thead>
+
+        <tbody data-bind="foreach: books">
+            <tr>
+                <td>
+                    <input type="text" data-bind="value: $data.name" />
+                </td>
+                <td>
+                    <input type="date" data-bind="value: $data.releaseDate" />
+                </td>
+                <td>Authors</td>
+                <td>
+                    <input type="number" data-bind="value: $data.raiting" min="1" max="10" />                    
+                </td>
+                <td>
+                    <input type="number" data-bind="value: $data.pages" />                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr />
+
+    <p data-bind="text: ko.toJSON($root)">
+    </p>
 </body>
 </html>

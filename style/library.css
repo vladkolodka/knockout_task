@@ -1,0 +1,13 @@
+.catalog { 
+    border: 1px solid black;
+    width: 100%;
+}
+
+.catalog thead {
+    font-weight: bold;
+    background-color: lightgray;
+}
+
+.catalog td {
+    border: 1px solid black;
+}
