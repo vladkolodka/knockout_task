@@ -1,6 +1,13 @@
 .catalog { 
     border: 1px solid black;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+.catalog select, .catalog input {
+    width: 90%;
 }
 
 .catalog thead {

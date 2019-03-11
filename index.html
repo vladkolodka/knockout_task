@@ -14,6 +14,7 @@
     <script src="./vendor/knockout.debug.js"></script>
     <script src="./vendor/knockout.mapping.debug.js"></script>
 
+    <script src="./scripts/knockout.extensions.js"></script>
     <script src="./scripts/editable_library.js"></script>
 </head>
 <body>
@@ -27,6 +28,7 @@
                 <td>Authors</td>
                 <td>Raiting</td>
                 <td>Pages</td>
+                <td>Status</td>
             </tr>
         </thead>
 
@@ -38,12 +40,18 @@
                 <td>
                     <input type="date" data-bind="value: $data.releaseDate" />
                 </td>
-                <td>Authors</td>
+                <td>
+                    <select data-bind="options: $root.authors, selectedOptions: $data.authors, optionsValue: 'id', optionsText: 'name'" size="5" multiple="true">  
+                    </select>
+                </td>
                 <td>
                     <input type="number" data-bind="value: $data.raiting" min="1" max="10" />                    
                 </td>
                 <td>
                     <input type="number" data-bind="value: $data.pages" />                    
+                </td>
+                <td>
+                    <button data-bind="enable: dirtyFlag.isDirty, click: $root.save">Save</button>
                 </td>
             </tr>
         </tbody>
